@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rickroll</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+    </style>
+</head>
+<body>
+    <div id="rickroll-container"></div>
+
+    <script>
+        // JavaScript to add the Rickroll video
+        const container = document.getElementById("rickroll-container");
+
+        // Add an iframe for the video
+        container.innerHTML = `
+            <iframe 
+                src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1&start=0&controls=0&loop=1&playlist=dQw4w9WgXcQ" 
+                allow="autoplay; encrypted-media" 
+                allowfullscreen>
+            </iframe>
+        `;
+
+        // Prevent the user from closing or navigating away
+        window.onbeforeunload = function() {
+            return "You're never gonna leave!";
+        };
+
+        // Disable the context menu (right-click)
+        document.addEventListener("contextmenu", (e) => e.preventDefault());
+
+        // Disable keyboard shortcuts (e.g., F12, Ctrl+W)
+        document.addEventListener("keydown", (e) => {
+            if (e.ctrlKey || e.key === "F12") {
+                e.preventDefault();
+                alert("Nope, you're stuck here!");
+            }
+        });
+    </script>
+</body>
+</html>
